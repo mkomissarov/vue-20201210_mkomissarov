@@ -49,18 +49,21 @@ export const app = new Vue({
 
   data: {
     meetup: null,
+    meetupDate: null,
     icons: agendaItemIcons,
     types: agendaItemTitles,
     image: null,
+    convertedDatesMeetups: null,
   },
 
   async mounted() {
     this.meetup = await this.getMeetupData();
-    this.image = await this.getMeetupCoverImage();
+    this.image = getMeetupCoverLink(this.meetup);
+    this.meetupDate = this.dateConvertered()
   },
 
   computed: {
-    //
+    
   },
 
   methods: {
@@ -69,15 +72,20 @@ export const app = new Vue({
     getMeetupData() {
       return fetch(API_URL + '/meetups/' + MEETUP_ID).then((res) => res.json());
     },
+
     getMeetupCoverImage() {
       return fetch(getMeetupCoverLink(this.meetup)).then((res) => res.url);
     },
-    dateConverter() {
-      return new Date(this.meetup.date).toLocaleDateString(navigator.language, {
-        day: 'numeric',
-        month: 'long',
-        year: 'numeric',
-      });
+
+    dateConvertered() {
+      return new Date(this.meetup.date).toLocaleDateString(
+        navigator.language,
+        {
+          day: 'numeric',
+          month: 'long',
+          year: 'numeric',
+        },
+      );
     },
   },
 });
