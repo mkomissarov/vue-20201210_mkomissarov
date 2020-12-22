@@ -49,11 +49,8 @@ export const app = new Vue({
 
   data: {
     meetup: null,
-    meetupDate: null,
     icons: agendaItemIcons,
     types: agendaItemTitles,
-    image: null,
-    convertedDatesMeetups: null,
   },
 
   async mounted() {
