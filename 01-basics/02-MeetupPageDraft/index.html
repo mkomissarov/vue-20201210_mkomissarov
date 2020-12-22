@@ -16,7 +16,7 @@
         <div>
           <div
             class="meetup-cover"
-            :style="image && `background-image:url(${image})`"
+            :style="meetup && `background-image:url(${meetupCoverImage})`"
           >
             <h1 class="meetup-cover__title">{{meetup.title}}</h1>
           </div>
@@ -89,7 +89,7 @@
                       alt="icon"
                       src="/assets/icons/icon-cal-lg.svg"
                     />
-                    <time datetime="2020-02-31">{{meetupDate}}</time>
+                    <time datetime="2020-02-31">{{dateConvertered}}</time>
                   </li>
                 </ul>
               </div>

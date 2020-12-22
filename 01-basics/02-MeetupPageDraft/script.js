@@ -58,23 +58,11 @@ export const app = new Vue({
 
   async mounted() {
     this.meetup = await this.getMeetupData();
-    this.image = getMeetupCoverLink(this.meetup);
-    this.meetupDate = this.dateConvertered()
   },
 
   computed: {
-    
-  },
-
-  methods: {
-    // Получение данных с API предпочтительнее оформить отдельным методом,
-    // а не писать прямо в mounted()
-    getMeetupData() {
-      return fetch(API_URL + '/meetups/' + MEETUP_ID).then((res) => res.json());
-    },
-
-    getMeetupCoverImage() {
-      return fetch(getMeetupCoverLink(this.meetup)).then((res) => res.url);
+    meetupCoverImage() {
+      return getMeetupCoverLink(this.meetup);
     },
 
     dateConvertered() {
@@ -88,4 +76,13 @@ export const app = new Vue({
       );
     },
   },
+
+
+  methods: {
+    // Получение данных с API предпочтительнее оформить отдельным методом,
+    // а не писать прямо в mounted()
+    getMeetupData() {
+      return fetch(API_URL + '/meetups/' + MEETUP_ID).then((res) => res.json());
+    },
+}
 });

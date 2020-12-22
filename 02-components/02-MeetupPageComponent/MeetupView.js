@@ -1,4 +1,4 @@
-// import { MeetupCover } from './MeetupCover.js';
+import { MeetupCover } from './MeetupCover.js';
 // import { MeetupDescription } from './MeetupDescription.js';
 // import { MeetupAgenda } from './MeetupAgenda.js';
 // import { MeetupInfo } from './MeetupInfo.js';
@@ -28,5 +28,9 @@ export const MeetupView = {
 
   // components
 
-  // props
+ props:{
+   meetup: {
+     type: Object,
+   }
+ }
 };

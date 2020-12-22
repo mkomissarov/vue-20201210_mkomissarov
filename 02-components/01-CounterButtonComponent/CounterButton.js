@@ -22,10 +22,4 @@ export const CounterButton = {
       this.$emit('increment', this.count + 1);
     },
   },
-
-  beforeMount: () => {
-    if (typeof this.count !== 'number' || this.count === 0) {
-      this.$emit('increment', 0);
-    }
-  },
 };
